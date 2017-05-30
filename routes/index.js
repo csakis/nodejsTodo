@@ -17,12 +17,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'A simple todo application', 'todos': todos });
 });
 
-router.post('/', function(req, res, next) {
+router.post('/addTask', function(req, res, next) {
   var newTodo = {};
-  newTodo.task = req.body.todo;
+  newTodo.task = req.body.task;
   newTodo.complete = false;
   todos.push(newTodo);
-  res.redirect("/");
+  res.status(200).send();
 });
 
 router.post('/update/', function(req, res, next) {

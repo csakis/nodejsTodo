@@ -9,4 +9,9 @@ $('#removeComplete').on('click', function(){
     window.location = "/";
   });
 });
+$('#todoBtn').on('click', function(){
+  $.post("/addTask", {task: $("#todoInput").val()}, function(){
+    window.location = "/";
+  });
+});
 
