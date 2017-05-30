@@ -24,7 +24,6 @@ router.post('/', function(req, res, next) {
   newTodo.idx = todos.length;
   newTodo.task = req.body.todo;
   newTodo.complete = false;
-
   todos.push(newTodo);
   res.redirect("/");
 });

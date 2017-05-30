@@ -5,8 +5,10 @@ block content
     h1= title
     ul.list-group
       each todo in todos
-        li.list-group-item(class=todo.complete?"complete":"")= todo.task
+        li.list-group-item(class=todo.complete?"complete":"" style="font-size: 1.8em;")= todo.task
           button.btn-complete.btn.btn-warning.pull-right(data-idx= todo.idx) Complete
-    form(method="post" action="/")
-      input#todoInput.form-control(name="todo" type=text, placeholder="Add to do")
-      button#todoBtn.btn.btn-primary(type=submit) Add
+    form(method="post" action="/").form-horizontal
+      .col-sm-8
+        input#todoInput.col-sm-8.form-control(name="todo" type=text, placeholder="Add to do")
+      .col-sm-3
+        button#todoBtn.btn.btn-block.btn-primary(type=submit) Add
