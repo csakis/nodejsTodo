@@ -3,12 +3,10 @@ var router = express.Router();
 
 var todos = [
   {
-    idx: 0,
     task: 'create todo application',
     complete: false
   },
   {
-    idx: 1,
     task: 'make todo nice',
     complete: true
   },
@@ -21,7 +19,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   var newTodo = {};
-  newTodo.idx = todos.length;
   newTodo.task = req.body.todo;
   newTodo.complete = false;
   todos.push(newTodo);
@@ -31,6 +28,16 @@ router.post('/', function(req, res, next) {
 router.post('/update/', function(req, res, next) {
   todos[req.body.index].complete = todos[req.body.index].complete ? false : true;
   console.dir(todos);
+  res.status(200).send();
+});
+router.post('/removeComplete/', function(req, res, next) {
+  var newTodos = [];
+  for (var i=0;i<todos.length; i++) {
+    if (!todos[i].complete) {
+      newTodos.push(todos[i]);
+    }
+  }
+  todos = newTodos;
   res.status(200).send();
 });
 

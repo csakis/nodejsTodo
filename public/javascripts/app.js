@@ -4,4 +4,9 @@ $('.btn-complete').on('click', function(){
     window.location = "/";
   });
 });
+$('#removeComplete').on('click', function(){
+  $.post("/removeComplete", function(){
+    window.location = "/";
+  });
+});
 
