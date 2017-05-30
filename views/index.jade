@@ -6,10 +6,13 @@ block content
     .row(style="margin-bottom: 30px;")
       button.btn.btn-danger.pull-right#removeComplete Remove completed tasks
     .row
-    ul.list-group
-      each todo,idx in todos
-        li.list-group-item(class=todo.complete?"complete":"" style="font-size: 1.8em;")= todo.task
-          button.btn-complete.btn.btn-warning.pull-right(data-idx= idx) Complete
+    if(todos.length==0)
+      h3 Well Done! You completed all your tasks.
+    else
+      ul.list-group
+        each todo,idx in todos
+          li.list-group-item(class=todo.complete?"complete":"" style="font-size: 1.8em;")= todo.task
+            button.btn-complete.btn.btn-warning.pull-right(data-idx= idx) Complete
     .form-horizontal
       .col-sm-8
         input#todoInput.form-control(name="todo" type=text, placeholder="Add to do", autofocus)
