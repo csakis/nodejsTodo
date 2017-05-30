@@ -10,7 +10,7 @@ var todos = [
   {
     idx: 1,
     task: 'make todo nice',
-    complete: false
+    complete: true
   },
 ];
 
@@ -32,7 +32,7 @@ router.post('/', function(req, res, next) {
 router.post('/update/', function(req, res, next) {
   todos[req.body.index].complete = todos[req.body.index].complete ? false : true;
   console.dir(todos);
-  res.redirect("/");
+  res.status(200).send();
 });
 
 

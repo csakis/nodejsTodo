@@ -5,7 +5,7 @@ block content
     h1= title
     ul.list-group
       each todo in todos
-        li.list-group-item= todo.task
+        li.list-group-item(class=todo.complete?"complete":"")= todo.task
           button.btn-complete.btn.btn-warning.pull-right(data-idx= todo.idx) Complete
     form(method="post" action="/")
       input#todoInput.form-control(name="todo" type=text, placeholder="Add to do")
