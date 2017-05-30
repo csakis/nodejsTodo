@@ -3,4 +3,9 @@ extends layout
 block content
   .container
     h1= title
-    p Welcome to #{title}
+    ul.list-group
+      each todo in todos
+        li.list-group-item= todo.task
+    form(method="post" action="/")
+      input#todoInput.form-control(name="todo" type=text, placeholder="Add to do")
+      button#todoBtn.btn.btn-primary(type=submit) Add
