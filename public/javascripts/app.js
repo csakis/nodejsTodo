@@ -1,3 +1,5 @@
-
-$("#todoBtn").click(function(){console.log("Input value: " +  $("#todoInput").val())});
+$('.btn-complete').on('click', function(){
+  var index = $(this).data('idx');
+  $.post("/update", {index: index});
+});
 

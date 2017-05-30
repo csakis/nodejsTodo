@@ -3,12 +3,12 @@ var router = express.Router();
 
 var todos = [
   {
-    idx: 1,
+    idx: 0,
     task: 'create todo application',
     complete: false
   },
   {
-    idx: 2,
+    idx: 1,
     task: 'make todo nice',
     complete: false
   },
@@ -21,12 +21,19 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   var newTodo = {};
-  newTodo.idx = todos.length + 1;
-  newTodo.complete = false;
+  newTodo.idx = todos.length;
   newTodo.task = req.body.todo;
+  newTodo.complete = false;
+
   todos.push(newTodo);
-  console.log(todos);
   res.redirect("/");
 });
+
+router.post('/update/', function(req, res, next) {
+  todos[req.body.index].complete = todos[req.body.index].complete ? false : true;
+  console.dir(todos);
+  res.redirect("/");
+});
+
 
 module.exports = router;
