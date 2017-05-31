@@ -1,6 +1,8 @@
 $('.btn-complete').on('click', function(){
   var index = $(this).data('idx');
-  $.post("/update", {index: index}, function(){
+  var complete = $(this).data('complete');
+  console.log(index);
+  $.post("/update", {index: index, complete:complete}, function(){
     window.location = "/";
   });
 });
