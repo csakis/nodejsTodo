@@ -39,16 +39,10 @@ router.post('/update/', function(req, res, next) {
 });
 
 router.post('/removeComplete/', function(req, res, next) {
-  var newTodos = [];
-  for (var i=0;i<todos.length; i++) {
-    if (!todos[i].complete) {
-      newTodos.push(todos[i]);
-    }
-  }
-  todos = newTodos;
-  fs.writeFile('./routes/data.js', "module.exports = { todos: " + JSON.stringify(todos) + "}", function (err) {
-    if (err) throw err;
-    res.status(200).send("OK");
-  });
+    mongo.db.collection("todos")
+        .remove({complete: true}, function(err, result) {
+        if (err) throw err;
+        res.status(200).send("OK");
+    });
 });
 module.exports = router;
