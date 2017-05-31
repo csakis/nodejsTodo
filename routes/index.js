@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-//var todos = require("./data").todos;
 var fs = require('fs');
 var mongo = require("./db")
 var ObjectId = require('mongodb').ObjectId;
